@@ -7,14 +7,8 @@ import {
   View,
 } from "react-native";
 import { useState } from "react";
-import {
-  EmojiPickerNativeViewProps,
-  EmojiPickerViewProps,
-} from "./EmojiPickerModule.types";
-import { requireNativeView } from "expo";
-
-const EmojiPopupView: React.ComponentType<EmojiPickerNativeViewProps> =
-  requireNativeView("EmojiPicker");
+import { EmojiPickerViewProps } from "./EmojiPickerModule.types";
+import EmojiPickerNativeView from "./EmojiPickerView";
 
 const EmojiPicker = ({
   children,
@@ -55,8 +49,8 @@ const EmojiPicker = ({
               <Text style={styles.buttonText}>Close</Text>
             </Pressable>
           )}
-          <EmojiPopupView
-            onEmojiSelected={({ nativeEvent: { emoji } }) => {
+          <EmojiPickerNativeView
+            onEmojiSelected={(emoji) => {
               setModalVisible(false);
               onEmojiSelected(emoji);
             }}
