@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-emoji-picker": ["../src/index"],
+      "expo-emoji-picker/*": ["../src/*"]
+    }
+  }
+}
