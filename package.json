@@ -1,6 +1,6 @@
 {
   "name": "expo-emoji-picker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Emoji Picker for React Native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -19,7 +19,9 @@
     "react-native",
     "expo",
     "expo-emoji-picker",
-    "EmojiPickerModule"
+    "emoji",
+    "ios",
+    "android"
   ],
   "repository": "https://github.com/alanjhughes/expo-emoji-picker",
   "bugs": {
@@ -30,10 +32,9 @@
   "homepage": "https://github.com/alanjhughes/expo-emoji-picker#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/react": "~18.3.12",
-    "expo-module-scripts": "^4.0.4",
     "expo": "~52.0.0",
-    "react-native": "0.76.0"
+    "expo-module-scripts": "^4.0.4",
+    "react-native": "0.79.1"
   },
   "peerDependencies": {
     "expo": "*",
