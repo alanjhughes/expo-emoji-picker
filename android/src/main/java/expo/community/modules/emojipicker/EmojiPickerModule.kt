@@ -6,7 +6,7 @@ import java.net.URL
 
 class EmojiPickerModule : Module() {
     override fun definition() = ModuleDefinition {
-        Name("EmojiPickerModule")
+        Name("EmojiPicker")
 
         View(EmojiPickerModuleView::class) {
             Events("onEmojiSelected")

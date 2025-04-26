@@ -14,7 +14,7 @@ import {
 import { requireNativeView } from "expo";
 
 const EmojiPopupView: React.ComponentType<EmojiPickerNativeViewProps> =
-  requireNativeView("EmojiPickerModule");
+  requireNativeView("EmojiPicker");
 
 const EmojiPicker = ({
   children,

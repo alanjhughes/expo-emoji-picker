@@ -7,7 +7,7 @@ import {
 } from "./EmojiPickerModule.types";
 
 const NativeView: React.ComponentType<EmojiPickerNativeViewProps> =
-  requireNativeView("EmojiPickerModule");
+  requireNativeView("EmojiPicker");
 
 export default function EmojiPicker(props: EmojiPickerViewProps) {
   return (
