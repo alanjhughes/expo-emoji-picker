@@ -1,19 +1,26 @@
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { StyleProp, ViewStyle, ViewProps } from "react-native";
 
-export type OnLoadEventPayload = {
-  url: string;
+type CloseButtonProps = {
+  close: () => void;
 };
 
-export type EmojiPickerModuleEvents = {
-  onChange: (params: ChangeEventPayload) => void;
+export type EmojiSelectionListener = (event: {
+  nativeEvent: SelectionEvent;
+}) => void;
+
+export type SelectionEvent = {
+  emoji: string;
 };
 
-export type ChangeEventPayload = {
-  value: string;
+export type EmojiPickerViewProps = ViewProps & {
+  /*
+   * Callback that will be called when an emoji is selected.
+   */
+  onEmojiSelected: (emoji: string) => void;
+  closeButton?: (props: CloseButtonProps) => React.ReactNode;
+  contentContainerStyle?: StyleProp<ViewStyle>;
 };
 
-export type EmojiPickerModuleViewProps = {
-  url: string;
-  onLoad: (event: { nativeEvent: OnLoadEventPayload }) => void;
-  style?: StyleProp<ViewStyle>;
+export type EmojiPickerNativeViewProps = ViewProps & {
+  onEmojiSelected: EmojiSelectionListener;
 };

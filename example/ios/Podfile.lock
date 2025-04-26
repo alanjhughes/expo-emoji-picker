@@ -3,6 +3,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EmojiPickerModule (0.1.0):
     - ExpoModulesCore
+    - MCEmojiPicker
   - EXConstants (17.0.8):
     - ExpoModulesCore
   - Expo (52.0.46):
@@ -45,6 +46,7 @@ PODS:
   - hermes-engine (0.76.9):
     - hermes-engine/Pre-built (= 0.76.9)
   - hermes-engine/Pre-built (0.76.9)
+  - MCEmojiPicker (1.2.3)
   - RCT-Folly (2024.10.14.00):
     - boost
     - DoubleConversion
@@ -1676,6 +1678,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - MCEmojiPicker
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1828,7 +1831,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
-  EmojiPickerModule: a04a72fa4fed6f254da99255b46584629baffb3b
+  EmojiPickerModule: cb05fdcb40e1cf3ae8ebe2250d8f76c72a9c5b68
   EXConstants: a1f35b9aabbb3c6791f8e67722579b1ffcdd3f18
   Expo: 3e53243e3281214a7d613f8a875c0b732d7512c2
   ExpoAsset: 0687fe05f5d051c4a34dd1f9440bd00858413cfe
@@ -1841,6 +1844,7 @@ SPEC CHECKSUMS:
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
+  MCEmojiPicker: 6650cfa8d79fc8d71bf77dbed6166f946cee9c96
   RCT-Folly: 7b4f73a92ad9571b9dbdb05bb30fad927fa971e1
   RCTDeprecation: ebe712bb05077934b16c6bf25228bdec34b64f83
   RCTRequired: ca91e5dd26b64f577b528044c962baf171c6b716

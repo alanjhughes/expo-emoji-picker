@@ -1,30 +1,40 @@
 package expo.community.modules.emojipicker
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.content.res.Configuration
+import androidx.emoji2.emojipicker.EmojiPickerView
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.views.ExpoView
 
-class EmojiPickerModuleView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
-  // Creates and initializes an event dispatcher for the `onLoad` event.
-  // The name of the event is inferred from the value and needs to match the event name defined in the module.
-  private val onLoad by EventDispatcher()
 
-  // Defines a WebView that will be used as the root subview.
-  internal val webView = WebView(context).apply {
-    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-    webViewClient = object : WebViewClient() {
-      override fun onPageFinished(view: WebView, url: String) {
-        // Sends an event to JavaScript. Triggers a callback defined on the view component in JavaScript.
-        onLoad(mapOf("url" to url))
-      }
+@SuppressLint("ViewConstructor")
+class EmojiPickerModuleView(context: Context, appContext: AppContext) :
+    ExpoView(context, appContext) {
+    private var emojiView: EmojiPickerView = EmojiPickerView(context)
+    private val onEmojiSelected by EventDispatcher()
+
+    init {
+        setupView()
     }
-  }
 
-  init {
-    // Adds the WebView to the view hierarchy.
-    addView(webView)
-  }
+    private fun setupView() {
+        addView(
+            emojiView, LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT
+            )
+        )
+
+        emojiView.setOnEmojiPickedListener { emoji ->
+            onEmojiSelected(mapOf("emoji" to emoji.emoji))
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        removeView(emojiView)
+        setupView()
+    }
 }

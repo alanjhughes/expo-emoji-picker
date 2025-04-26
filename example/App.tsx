@@ -1,73 +1,60 @@
-import { useEvent } from 'expo';
-import EmojiPickerModule, { EmojiPickerModuleView } from 'expo-emoji-picker';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Text,
+  Platform,
+  Pressable,
+} from "react-native";
+import { EmojiPicker } from "expo-emoji-picker";
+
+const CloseButton = ({ close }: { close: () => void }) => (
+  <Pressable onPress={close}>
+    <Text style={styles.buttonText}>Close ❌</Text>
+  </Pressable>
+);
 
 export default function App() {
-  const onChangePayload = useEvent(EmojiPickerModule, 'onChange');
+  const [emoji, setEmoji] = useState("🫡");
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{EmojiPickerModule.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{EmojiPickerModule.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await EmojiPickerModule.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <EmojiPickerModuleView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
-        </Group>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-function Group(props: { name: string; children: React.ReactNode }) {
-  return (
-    <View style={styles.group}>
-      <Text style={styles.groupHeader}>{props.name}</Text>
-      {props.children}
+    <View style={styles.container}>
+      <Text style={{ fontSize: 30, marginBottom: 20 }}>
+        Expo Emoji Picker ✨
+      </Text>
+      <TextInput value={emoji} style={{ fontSize: 50 }} />
+      <EmojiPicker onEmojiSelected={setEmoji}>
+        <Text style={styles.buttonText}>Open Emoji Picker</Text>
+      </EmojiPicker>
+      {Platform.OS === "android" && (
+        <EmojiPicker onEmojiSelected={setEmoji} closeButton={CloseButton}>
+          <Text style={styles.buttonText}>
+            Open Emoji Picker With Custom Close button
+          </Text>
+        </EmojiPicker>
+      )}
     </View>
   );
 }
 
-const styles = {
-  header: {
-    fontSize: 30,
-    margin: 20,
-  },
-  groupHeader: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  group: {
-    margin: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 20,
-  },
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eee',
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
   },
-  view: {
+  modalView: {
     flex: 1,
-    height: 200,
+    backgroundColor: "white",
+    paddingTop: 50,
   },
-};
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    backgroundColor: "#2196F3",
+    padding: 10,
+    borderRadius: 5,
+  },
+});

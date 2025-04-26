@@ -1,17 +1,9 @@
 {
-  "platforms": [
-    "apple",
-    "android",
-    "web"
-  ],
+  "platforms": ["apple", "android"],
   "apple": {
-    "modules": [
-      "EmojiPickerModule"
-    ]
+    "modules": ["EmojiPickerModule"]
   },
   "android": {
-    "modules": [
-      "expo.community.modules.emojipicker.EmojiPickerModule"
-    ]
+    "modules": ["expo.community.modules.emojipicker.EmojiPickerModule"]
   }
 }

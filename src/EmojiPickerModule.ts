@@ -1,12 +1,5 @@
-import { NativeModule, requireNativeModule } from 'expo';
+import { NativeModule, requireNativeModule } from "expo";
 
-import { EmojiPickerModuleEvents } from './EmojiPickerModule.types';
+declare class EmojiPickerModule extends NativeModule {}
 
-declare class EmojiPickerModule extends NativeModule<EmojiPickerModuleEvents> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
-}
-
-// This call loads the native module object from the JSI.
-export default requireNativeModule<EmojiPickerModule>('EmojiPickerModule');
+export default requireNativeModule<EmojiPickerModule>("EmojiPickerModule");
